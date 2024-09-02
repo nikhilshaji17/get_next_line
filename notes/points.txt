@@ -1,0 +1,3 @@
+typecasting malloc is inaccurate (why?)
+fd >= OPEN_MAX (bonus)
+where do static variables get stored in memory?

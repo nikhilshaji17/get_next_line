@@ -1,0 +1,10 @@
+1. We will have to understand what the read function does
+2. We will have to understand what static variables are.
+3. The buffer size can be 1, unless the evaluator specifies.
+4. We consider that get_next_line() has an undefined behavior if the file 
+	pointed to by the file descriptor changed since the last call 
+	whereas read() didn’t reach the end of file. 
+5. We also consider that get_next_line() has an undefined behavior when reading 
+	a binary file. However, you can implement a logical way 
+	to handle this behavior if you want to.
+6. Buffer size, if not explicitly mentioned, can be defined by you.

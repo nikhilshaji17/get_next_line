@@ -1,0 +1,52 @@
+Static variables:
+1. static local variables - variables whose value persist across function calls
+2. Example:
+	void f()
+	{
+		static int calls = 0;
+		calls += 1;
+		printf("Value of calls: %d\n", calls);
+	}
+
+	int main()
+	{
+		f();
+		f();
+	}
+3. In the above example, the first call to f declares a static int named calls
+	and initializes its value to 0. Then it is incremented and printed.
+4. The second call however, does not redeclare calls.
+5. Rather, the previous function call value is stored and used again.
+6. Think of static variables as those that are declared only once.
+7. the variable calls is a static local variable
+
+Example where static variables are useful:
+1. We can use them to track the log messages, in order to identify
+	when things went wrong
+2. test_two.c is an example program that shows this work
+
+File opening and reading:
+1. Generally, a system call is a way to get resources from the OS
+2. In this example, we are requesting to open a file and then read it.
+3. In linux, most of the system resources are represented as files like sockets
+	and pipes
+4. The read function has 3 parameters, the file descriptor, the array to 
+	read into, and finally the number of bytes to read.
+5. It returns the number of bytes successfully read. This can be 0 if we are
+	at the end of the file, or it can be less than count in case we 
+	do not have that many bytes remaining to read.
+6. You want to make sure that the buffer is big enough to accept as many bytes
+	at a time, in order to minimize the number of system calls you make.
+7. The -D flag is used to define the value of a variable at compile time,
+	and we use it to define BUFFER_SIZE (if required)
+
+Plan:
+1. Read everything into a temporary buffer
+2. Iterate through the temporary buffer till the new line character, and append 
+	everything to the new buffer
+3. Use strjoin function to add all the new letters to your final string
+
+Resources used:
+1. https://www.youtube.com/watch?v=Hm5Jc7ajZsk - Static Local Variables 
+2. https://www.youtube.com/watch?v=scXWLP8uhDU - Opening and Reading Files
+3. https://man7.org/linux/man-pages/man2/read.2.html - read() man page
